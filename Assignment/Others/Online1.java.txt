@@ -1,0 +1,51 @@
+def Check(str1):
+    mail = ["gmail", "ymail", "yahoo", "outlook", "yandex"]
+    domain = ["com", "net", "ru", "bd"]
+    if str1[0:3].isdigit() and str1[0:3] != '000':
+        count = 3
+        name = ""
+        for a in str1[3:]:
+            if a.isalpha():
+                name += a
+                count += 1
+            else:
+                break
+        if name.isalpha():
+            if str1[count] == '.':
+                count += 1
+                if str1[count:count+3] == '011':
+                    if str1[count+3] == '_':
+                        if str1[count+4].isalpha() or str1[count+4].isdigit():
+                            if str1[count+5] == '@':
+                                if '.' in str1[count+6:]:
+                                    ls = str1[count+6:].split(".")
+                                    if ls[0] in mail and ls[1] in domain:
+                                        return True
+                                    else:
+                                        return False
+                                else:
+                                    return False
+                            else:
+                                return False
+                        else:
+                            return False
+                    else:
+                        return False
+                else:
+                    return False
+            else:
+                return False
+        else:
+            return False
+    else:
+        return False
+
+
+if __name__ == '__main__':
+    while True:
+        string = input("Enter the string:")
+        value = Check(string)
+        if value:
+            print("Valid")
+        else:
+            print("Not Valid")

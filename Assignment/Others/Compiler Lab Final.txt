@@ -1,0 +1,119 @@
+1.import java.util.Stack;
+
+public class Lab_Final {
+
+    public static Double calculate(double a, double b, char operator){
+        switch (operator) {
+            case '+':
+                return a + b;
+            case '-':
+                return b - a;
+            case '*':
+                return a * b;
+            case '/':
+                if (a == 0)
+
+
+                    throw new
+                            UnsupportedOperationException("Any number never devide by Zero");
+                return b / a;
+        }
+
+
+        return 0.0;
+
+
+    }
+    public static Double convert(String expression) {
+
+        Stack<Double> stack = new Stack<>();
+
+        StringBuilder input = new StringBuilder(expression);
+        input.reverse();
+
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+
+            if (c == '*' || c == '/' || c == '^' || c == '+' || c == '-') {
+                double s1 = stack.pop();
+                double s2 = stack.pop();
+                double temp = calculate(s2, s1, c);
+                stack.push(temp);
+            } else {
+                stack.push((double) (c-'0'));
+            }
+        }
+
+        double result = stack.pop();
+        return result;
+    }
+
+    public static void main(String[] args) {
+        String exp = "+/-532/9*52";
+        System.out.println("Input The Expression Is: " + exp);
+        System.out.println("Output The prefix expression Evaluation: " + convert(exp));
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+import java.io.*;
+import java.util.Scanner;
+
+public class lab {
+
+    public static void main(String args[]) throws IOException {
+        FileReader in = null;
+        FileWriter out = null;
+
+
+        try {
+            in = new FileReader("expression.txt");
+            out = new FileWriter("random.txt");
+            Scanner s = new Scanner(in);
+
+            int num1,num2,output;
+            switch (in) {
+                case '+':
+                    output = num1 + num2;
+                    break;
+
+                case '-':
+                    output = num1 - num2;
+                    break;
+
+                case '*':
+                    output = num1 * num2;
+                    break;
+
+                case '/':
+                    output = num1 / num2;
+                    break;
+
+
+                default:
+                    System.out.printf("You have entered wrong operator");
+                    return;
+            }
+
+            System.out.println(out);
+        }
+        catch (FileNotFoundException e){
+            System.out.println(e);
+        }
+        finally {
+            System.out.println();
+        }
+  }
+
+}
+
+

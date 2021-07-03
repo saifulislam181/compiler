@@ -1,0 +1,289 @@
+1.#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+    int i;
+    char a[9];
+    printf("Enter the UIU_ID:\n");
+    scanf("%s", &a);
+
+    if(a[0]=='0')
+    {
+        if(a[1]=='1')
+        {
+            if(a[2]=='1')
+            {
+                if(a[3]>='1'&&a[3]<='9')
+                {
+                    if(a[4]>='1'&&a[4]<='9')
+                    {
+                        if(a[5]>='1'&&a[5]<='3')
+                        {
+                            if(a[6]>='0'&&a[6]<='9')
+                            {
+                                if(a[7]>='0'&&a[7]<='9')
+                                {
+                                    if(a[8]>='1'&&a[8]<='9')
+                                    {
+                                        printf("vaild");
+                                    }
+
+
+                                        else
+                                        {
+                                            printf("not vaild");
+                                        }
+                                    }
+
+                                    else
+                                    {
+                                        printf("not vaild");
+                                    }
+
+                                }
+                                else
+                                {
+                                    printf("not vaild");
+                                }
+                            }
+
+                        }
+                        else
+                        {
+                            printf("not vaild");
+                        }
+
+                    }
+                    else
+                    {
+                        printf("not vaild");
+                    }
+                }
+
+            }
+            else
+            {
+                printf("not vaild");
+            }
+        }
+
+        else
+        {
+            printf("not vaild");
+        }
+
+
+
+        return 0;
+    }
+
+2.#include<stdio.h>
+int main()
+{
+    char str[] = "";
+    int length;
+    int i;
+    scanf ("%s", str);
+    length = strlen (str);
+    for (i=0; i<length; i++){
+            if(str[]>='a'&&str[]>='z'){
+                if(str[]>='0'&&str[]>='9'){
+                    if(str[]=="@bscse.uiu.ac.bd"||str[]>="@bseee.uiu.ac.bd"){
+                        printf("vaild")
+                    }
+                    else("invaild")
+                }
+                 else("invaild")
+            }
+             else("invaild")
+
+    }
+
+    return 0;
+}
+
+
+
+5.#include <stdio.h>
+
+int main()
+{
+    char s[30];
+    printf("Enter the string:);
+
+           scanf("%s",s);
+           int count=0;
+
+
+           for(int i=0; i<s ; i++)
+           if(s >= 'a' && s <= 'z')
+    {
+        count++;
+
+        {
+            if(a == 'uiu')
+                {
+                    if(s >= '0' && s<= '9')
+                    {
+                        for(int i=0; i<s ; i++)
+                            if(s >= 'a' && s <= 'z')
+                            {
+                                count++;{
+                                
+
+                                        printf("vaild");
+                                    }
+                                    else
+                                    {
+                                        printf("Invaild");
+                                    }
+                                    else
+                                    {
+                                        printf("Invaild");
+                                    }
+                                    else
+                                    {
+                                        printf("invaild");
+                                    }
+                                    else
+                                    {
+                                        ("Invaild");
+                                    }
+
+
+                                }
+                            }
+
+
+
+                    }
+                }
+            }
+        }
+        
+
+3.#include<stdio.h>
+#include<stdlib.h>
+main()
+{
+    char a[8];
+    printf("Enter your password :\n");
+    scanf("%s",a);
+    char c;
+    int len;
+    int i;
+    len=strlen(a);
+    for(i=0; i<len; i++){
+        if((a[i]>='a'&&a[i]<='z')||(a[i]>='A'&&a[i]<='Z')&&(a[i]>='0'&&a[i]<='9'))
+        {
+            if(a[i]=='#'||a[i]=='$'||a[i]=='*'||a[i]=='&')
+            {
+                printf("Password is vaild");
+            }
+            else
+            {
+                printf("password Invaild");
+            }
+        }
+
+}
+
+return 0;
+
+}
+
+
+
+
+4.#include<stdio.h>
+int main()
+{
+    char str[] = "";
+    int length;
+    int i;
+    scanf ("%s", str);
+    length = strlen (str);
+    for (i=0; i<length; i++){
+
+        if ((str[i] !>= 'a' && str[i] !<= 'z')|| (str[i] !>= 'A' && str[i] !<= 'Z'))
+        {
+            printf("Invaild");
+
+        }
+        else
+        {
+            printf("vaild");
+        }
+    }
+
+    return 0;
+}
+
+
+
+
+-----------------------------------------------------------------------------------
+using java.......
+3.
+import java.util.Scanner;
+
+public class compiler {
+
+    public static final int PASSWORD_LENGTH = 8;
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input a password");
+
+        String s = input.nextLine();
+
+        if (password(s)) {
+            System.out.println("Password is valid: " + s);
+        } else {
+            System.out.println("password is Not a valid : " + s);
+        }
+
+    }
+
+    public static boolean password(String password) {
+
+        if (password.length() < PASSWORD_LENGTH)
+
+            return false;
+
+        int charCount = 0;
+        int numCount = 0;
+        int specCount=0;
+        for (int i = 0; i < password.length(); i++) {
+
+            char ch = password.charAt(i);
+
+            if (passwordNumber(ch)) numCount++;
+            else if (passwordLetter(ch)) charCount++;
+            else if (passwordSpecial(ch)) specCount++;
+            else return false;
+        }
+
+
+        return (charCount >= 2 && numCount >= 1 && specCount >= 1);
+    }
+
+    public static boolean passwordLetter(char ch) {
+        ch = Character.toUpperCase(ch);
+        return (ch >= 'A' && ch <= 'Z');
+    }
+
+
+    public static boolean passwordNumber(char ch) {
+
+        return (ch >= '0' && ch <= '9');
+    }
+
+    public static boolean passwordSpecial(char ch) {
+
+        return (ch== '@'|| ch == '#' || ch == '%'|| ch =='&');
+
+    }
+
+}

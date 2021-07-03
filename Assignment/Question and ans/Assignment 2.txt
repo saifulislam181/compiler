@@ -1,0 +1,123 @@
+
+import java.util.Scanner;
+
+public class com {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        String str1 = "";
+        System.out.println("Enter the no.of lines:");
+        String[] no = new String[s.nextInt()];
+        s.nextLine();
+        for (int i = 0; i < no.length; i++) {
+            no[i] = s.nextLine();
+            str1 = str1 + no[i] + " ";
+            int dflag = 0;
+            int idflag = 0;
+            int idfflag = 0;
+            int typflag = 0;
+            int valflag = 0;
+
+            String idf[] = new String[10];
+            String typ[] = new String[10];
+            String id[] = new String[10];
+            String val[] = new String[10];
+            String data[] = new String[10];
+
+            String[] ch = str1.split(" ");
+            System.out.println(" ");
+            for (int i = 0; i < ch.length; i++) {
+                switch (ch[i]) {
+                    case "char":
+                    case "int":
+                    case "float":
+                    case "double":
+                        if ("(".equals(ch[i + 2])) {
+
+                            idf[idfflag] = ch[i + 1];
+                            idfflag++;
+                            int b = 5;
+                            typ[typflag] = ch[i + 3];
+                            ch[i + 3] = " ";
+                            while (",".equals(ch[i + b]) && !")".equals(ch[i + b])) {
+                                typ[typflag] = typ[typflag] + "," + ch[i + b + 1];
+                                ch[i + b + 1] = " ";
+                                b = b + 3;
+
+                            }
+
+                        }
+                        else {data[dflag] = ch[i];
+                            dflag++;
+                            id[idflag] = ch[i + 1];
+                            idflag++;
+                            if ("=".equals(ch[i+2])) {
+                                if ("'".equals(ch[i + 3])) {
+                                    val[valflag] = ch[i + 4];
+                                    valflag++;
+                                } else {val[valflag] = ch[i + 3];
+                                    valflag++;
+                                }
+                            }else
+                                {
+                                if("char".equals(ch[i])){
+                                    val[valflag]=" ";
+                                    valflag++;
+                                }else{val[valflag] = "0";
+                                    valflag++;
+                                }
+
+                                }
+                            int b = 2;
+                            while(!";".equals(ch[i+b])){
+                                if(",".equals(ch[i+b])){
+                                    id[idflag] = ch[i + b + 1];
+                                    idflag++;
+                                    data[dflag] = ch[i];
+                                    dflag++;
+                                    if ("=".equals(ch[i+b+2 ]))
+                                    {
+                                        if (!"'".equals(ch[i + b + 3])) {
+                                        val[valflag] = ch[i + b + 3];
+                                        valflag++;
+                                    } else
+                                        {
+                                        val[valflag] = ch[i + b + 4];
+                                        valflag++;
+                                    }
+                                    }
+                                    else
+                                        {
+                                            if ("char".equals(ch[i]))
+                                            {
+                                        val[valflag] = " ";
+                                        valflag++;
+                                    }
+                                            else {
+                                        val[valflag] = "0";
+                                        valflag++;}
+                                        }
+                                }
+                                b++;
+                            }
+                        }
+                        break;
+                }
+            }
+            System.out.println("   SL No    |   Name   |    Data Type    |     Value     ");
+            System.out.println(" ");
+            for (int q = 0; q < idflag; q++)
+            {
+                System.out.print("    " + id[q] + "             ");
+                System.out.print(data[q] + "                                ");
+                System.out.println(val[q]);}
+            for (int q = 0; q < idfflag; q++)
+            {
+                System.out.print("    " + idf[q] + "                     ");
+                System.out.print("        ");
+                System.out.println(typ[q]);
+            }
+        }
+    }
+
+}
+

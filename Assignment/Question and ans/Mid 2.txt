@@ -1,0 +1,98 @@
+import java.util.Scanner;
+
+public class com {
+
+    public static final int PASSWORD_LENGTH = 20;
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("FOLLOW THE INSTRUCTION FIRST:\n\n");
+
+        String s = input.nextLine();
+
+        if (password(s)) {
+            System.out.println("Password is valid: " + s);
+        } else {
+            System.out.println("password is Not a valid : " + s);
+        }
+
+    }
+
+    public static boolean password(String password) {
+
+        if (password.length() < PASSWORD_LENGTH)
+
+            return false;
+
+        int charCount = 0;
+        int numCount = 0;
+        int specCount=0;
+        for (int i = 0; i < password.length(); i++) {
+
+            char ch = password.charAt(i);
+
+            if (passwordNumber(ch)) numCount++;
+            else if (passwordNumber1(ch)) numCount++;
+            else if (passwordNumber2(ch[3])) numCount++;
+            else if (passwordLetter(ch)) charCount++;
+            else if (passwordLetter2(ch)) charCount++;
+            else if (passwordNumberid(ch)) specCount++;
+            else if (passwordNumberid2(ch)) specCount++;
+            else if (passwordNumberid3(ch)) specCount++;
+            else if (passwordNumber11(ch)) specCount++;
+          
+
+
+            else return false;
+        }
+
+
+        return (charCount >= 2 && numCount >= 1 && specCount >= 1);
+    }
+
+    public static boolean passwordNumber1(char ch) {
+
+        return (ch >= '"');
+    }
+    public static boolean passwordNumber2(char ch) {
+
+        if (ch[3] %2==1);
+        return (true);
+        else if 
+         return false;
+    }
+   
+    public static boolean passwordLetter(char ch) {
+        ch = Character.toUpperCase(ch);
+        return (ch >= 'A' && ch <= 'Z');
+    }
+    public static boolean passwordLetter2(char ch) {
+        ch = Character.toLowerCase(ch);
+        return (ch >= 'a' && ch <= 'z');
+    }
+
+    public static boolean passwordNumber(char ch) {
+
+        return (ch >= '0' && ch <= '3');
+    }
+
+    public static boolean passwordNumberid(char ch) {
+
+        return (ch >= '0' && ch <= '9');
+    }
+    public static boolean passwordNumberid2(char ch) {
+
+        return (ch >= '0' && ch <= '9');
+    }
+    public static boolean passwordNumberid3(char ch) {
+
+        return (ch >= '1' && ch <= '9');
+    }
+    public static boolean passwordNumber11(char ch) {
+
+        return (ch >= '"' );
+    }
+   
+
+}

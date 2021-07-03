@@ -1,0 +1,56 @@
+public class Converter {
+
+    private String infix;
+
+    private void addMultPre(StringBuilder builder, String item) {
+        String[] multipliers = item.split("[*/]");
+        for (int j = 0; j < multipliers.length - 1; j++) {
+            builder.append(infix.charAt(builder.length() + multipliers[j].length()));
+            builder.append(multipliers[j]);
+        }
+        builder.append(multipliers[multipliers.length - 1]);
+    }
+
+    private void addMultPost(StringBuilder builder, String item) {
+        String[] multipliers = item.split("[*/]");
+        builder.append(multipliers[0]);
+        for (int j = 1; j < multipliers.length; j++) {
+            builder.append(multipliers[j]);
+            builder.append(infix.charAt(builder.length()));
+        }
+    }
+
+    public String prefix() {
+        String[] items = infix.split("[+-]");
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < items.length - 1; i++) {
+            builder.append(infix.charAt(builder.length() + items[i].length()));
+            addMultPre(builder, items[i]);
+        }
+        addMultPre(builder, items[items.length - 1]);
+        return builder.toString();
+    }
+
+    public String postfix() {
+        String[] items = infix.split("[+-]");
+        StringBuilder builder = new StringBuilder();
+        char sign;
+        addMultPost(builder, items[0]);
+        for (int i = 1; i < items.length; i++) {
+            sign = infix.charAt(builder.length());
+            addMultPost(builder, items[i]);
+            builder.append(sign);
+        }
+        return builder.toString();
+    }
+
+    public Converter(String infix) {
+        this.infix = infix;
+    }
+
+    public static void main(String[] args) {
+        Converter c = new Converter("a+b*(c^d-e)^(f+g*h)-i");
+        System.out.println(c.postfix());
+        System.out.println(c.prefix());
+    }
+}
